@@ -1,6 +1,8 @@
 const path = require('path')
 const HTMLWebpackPlugin = require('html-webpack-plugin')
 const {CleanWebpackPlugin} = require('clean-webpack-plugin')
+const PostCssPresetEnv = require('postcss-preset-env')
+
 module.exports = {
     mode: 'development',
     entry: "./src/index.ts",
@@ -49,6 +51,27 @@ module.exports = {
                     'ts-loader'],
                 // 要排除的文件
                 exclude: /node-modules/
+            },
+            // 設定less檔案的處理
+            {
+                test: /\.less$/,
+                use: [
+                    "style-loader",
+                    "css-loader",
+                    {
+                        loader: "postcss-loader",
+                        options: {
+                            postcssOptions: {
+                                plugins: [
+                                    new PostCssPresetEnv({
+                                        browsers: 'last 2 versions'
+                                    })
+                                ]
+                            }
+                        }
+                    },
+                    "less-loader"
+                ]
             }
         ]
     },
