@@ -9,9 +9,10 @@ module.exports = {
     output: {
         path: path.resolve(__dirname, 'dist'),
         filename: "bundle.js",
-        // 告訴webpack不使用箭頭
+        // 告訴webpack不使用箭頭和不使用const
         environment: {
-            arrowFunction: false
+            arrowFunction: false,
+            const: false
         }
     },
 
