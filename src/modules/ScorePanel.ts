@@ -1,6 +1,6 @@
 export default class ScorePanel {
-    private score = 0;
-    private level = 1;
+    score = 0;
+    level = 1;
     scoreEle: HTMLElement;
     levelEle: HTMLElement;
 

@@ -23,10 +23,23 @@ export default class Snake {
 
     // 設定蛇的座標(蛇頭座標)
     set X(value: number) {
+        if (this.X === value) {
+            return
+        }
+        // 蛇撞牆必須死
+        if (value < 0 || value > 290) {
+            throw new Error('蛇撞牆必須死')
+        }
         this.head.style.left = value + 'px'
     }
 
     set Y(value: number) {
+        if (this.Y === value) {
+            return
+        }
+        if (value < 0 || value > 290) {
+            throw new Error('蛇撞牆必須死')
+        }
         this.head.style.top = value + 'px'
     }
 
